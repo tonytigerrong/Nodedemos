@@ -1,0 +1,20 @@
+{
+  "name": "bower_demo",
+  "homepage": "https://github.com/tonytigerrong/node_demos",
+  "authors": [
+    "tonyrong"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1"
+  }
+}
