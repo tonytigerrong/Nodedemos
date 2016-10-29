@@ -1,0 +1,9 @@
+{
+	"name": "mysql_demo",
+	"version": "0.0.1",
+	"description": "",
+	"main": "db.js",
+	"dependencies": {
+		"mysql": "^2.5.4"
+	}
+}
