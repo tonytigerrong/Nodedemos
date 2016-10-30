@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ng-app,ng-controller,module,$scope</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+</head>
+<body>
+<!-- app: myapp -->
+	<div ng-app="myapp" ng-init="
+	students = [
+		{
+			name: 'tony rong',
+			programe: 'computer system'
+		},
+		{
+			name: 'connie zhao',
+			programe: 'ceo'
+		}
+	]
+" ng-controller="HelleController">
+		<h2>Welcome {{helloTo.title}}</h2>
+		<ol>
+			<li ng-repeat="student in students">
+			{{'student:' + student.name + ' ; programe: ' + student.programe}}
+			</li>
+		</ol>
+	<script>
+		angular.module("myapp",[])
+		.controller("HelleController",function($scope){
+			$scope.helloTo = {};
+			$scope.helloTo.title = "Tony Rong";
+		});
+	</script>
+	</div>
+
+	
+
+
+</body>
+</html>

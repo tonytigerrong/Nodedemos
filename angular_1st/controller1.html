@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+</head>
+<body>
+<!-- app: mainApp -->
+	<div ng-app="mainApp" ng-controller="studentController">
+		Enter first name:<input type="text" ng-model="person.firstName" name=""><br>
+		Enter last name:<input type="text" ng-model="person.lastName" name=""><br>
+		You are entering : {{person.fullName() | uppercase}} <br>
+		You are entering : {{person.fullName() | lowercase}}
+	<script>
+		angular.module("mainApp",[]).controller("studentController",function($scope){
+			$scope.person = {
+				firstName: 'tony',
+				lastName: 'rong',
+
+				fullName: function(){
+					var temp = $scope.person;
+					return temp.firstName + ' ' + temp.lastName;
+				}
+			};
+		});
+	</script>
+	</div>
+</body>
+</html>

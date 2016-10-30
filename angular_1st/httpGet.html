@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+</head>
+<body>
+	<div ng-app='mainApp' ng-controller='myController'>
+		{{students}}
+	<script>
+		angular.module('mainApp',[]).controller('myController',function($scope,$http){
+			//$scope.students = "test";
+			$http.get('data.txt').success(function(response){
+				$scope.students = response;
+			});
+		});
+	</script>
+	</div>
+
+</body>
+</html>
