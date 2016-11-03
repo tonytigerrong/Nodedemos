@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Directives</title>
+	<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+</head>
+<body>
+<div ng-app='mainApp' ng-controller='myController'>
+<employee name='Tony'/>	
+</div>
+<script>
+	var mainApp = angular.module("mainApp",[]);
+	mainApp.directive("employee",function(){
+		var directive = {};
+		directive.restrict = "E";
+		// option 1: genarate html by template
+		directive.template = "<b>genarate by template: </b>Emplyee: {{employee.name}} / Title:  {{employee.title}}";
+		directive.scope = {
+			employee:  "=name"
+		}
+		//option 2: generate html by complie function
+		// directive.compile = function(element,attributes){
+		// 	var linkFunction = function($scope,element,attributes){
+		// 		element.html("<b>generate by complie:</b>Emplyee: " + $scope.employee.name + " Title: " + $scope.employee.title);
+		
+		// 	};
+		// 	return linkFunction;
+		// }
+
+		return directive;
+	});
+
+	mainApp.controller("myController",function($scope){
+		$scope.Tony = {};
+		$scope.Tony.name = "Tony Rong";
+		$scope.Tony.title = "Dev";
+
+
+	});
+
+</script>
+
+
+</body>
+</html>

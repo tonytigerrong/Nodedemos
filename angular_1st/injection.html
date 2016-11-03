@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+</head>
+<body>
+	<div ng-app='mainApp', ng-controller='myController'>
+		<p>Enter a number:</p> <input type="number" ng-model='number' name="">
+		<br>
+
+		<button ng-click="square()">service->X<sup>2</button>
+		<div>Result : {{result}}</div>
+		<script>
+			var app = angular.module('mainApp',[]);
+
+			app.constant('defaultNumber',6);
+
+			app.config(function($provide){
+				$provide.provider('Math',function(){
+					this.$get = function(){
+						var fun = {};
+						fun.multiply = function(a,b){
+							console.log('in Math'+a);
+							return a*b;
+						}
+						return fun;
+					}
+				});
+			});
+
+			app.service('squareService',function(Math){
+				this.square = function(a){
+					console.log('in squareService'+a);
+					return Math.multiply(a,a);
+				}
+			});
+
+			app.controller('myController',function($scope,defaultNumber,Math,squareService){
+				$scope.number = defaultNumber;
+				$scope.result = squareService.square($scope.number);
+				//$scope.result = Math.multiply($scope.number,$scope.number);
+				// just use $provider injection
+				// $scope.square = function(){
+				// 	$scope.result = Math.multiply($scope.number,$scope.number);
+				// }
+				// do it again by service injection
+				$scope.square = function(){
+					$scope.result = squareService.square($scope.number);
+				}
+			});
+		</script>
+	</div>
+</body>
+</html>
