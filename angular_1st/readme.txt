@@ -36,6 +36,7 @@
 	2. generate 'employee' directive tag content by template
 	3. generate 'employee' directive tag content by compile function
 
-
+(12)scope.html
+	1. $scope $controller
 
 TODO:https://www.tutorialspoint.com/angularjs/angularjs_custom_directives.htm
